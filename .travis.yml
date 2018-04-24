@@ -1,0 +1,12 @@
+sudo: required
+
+lang: bash
+
+services:
+  - docker
+
+script:
+  - docker pull docker.elastic.co/kibana/kibana-oss:6.2.4
+  - docker tag docker.elastic.co/kibana/kibana-oss:6.2.4 lixinio/kibana:6.2.4
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - docker push lixinio/kibana:6.2.4
